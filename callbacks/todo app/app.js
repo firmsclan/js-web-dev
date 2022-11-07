@@ -1,33 +1,38 @@
-let tasks = []
-const addBtn = document.querySelector('#add')
-const clearBtn = document.querySelector('#clear-all')
-const input = document.querySelector(`[type=text]`)
-//const input = document.querySelector('#input')
-const taskBox = document.querySelector('#task-box')  
-let index = 1
+tasks = []
+const addButton = document.querySelector('#add')
+const deleteAllButton = document.querySelector('#clear-all')
+const taskInput = document.querySelector('#input')
+const ul = document.querySelector('#task-box')
 
-addBtn.addEventListener("click", ()=>{
-    if(input.value){
-       const value = input.value
-       const li =  document.createElement('li') 
-       const checkBtn = document.createElement('button')
-       const notSmarSpan = document.createElement('span')
-       tasks.push(value)
-       console.log(index)
-        notSmarSpan.innerHTML = `${index} - ${value} `
-        checkBtn.innerHTML = 'x'
-       checkBtn.id = 'delete'
-       li.append(notSmarSpan)
-       li.append(checkBtn)
-       taskBox.append(li)
-       input.value = ''
-       console.log(tasks.length)
-        index ++;
+addButton.addEventListener("click", ()=>{
+    if(taskInput.value){
+        //create li
+        //append li to ul
+        //put input value into li
+        const span = document.createElement('span')
+        let deleteButton = document.createElement('button')
+        let li =  document.createElement('li')
+        li.setAttribute("id", taskInput.value)
+        console.log(li)
+        span.innerHTML = taskInput.value
+        tasks.push(taskInput.value)
+        li.append(span)
+        li.append(deleteButton)
+        ul.append(li)
+        deleteButton.innerHTML = 'x'
+        taskInput.value = ''
     }
 })
- 
-clearBtn.addEventListener("click", () =>{
-    taskBox.innerHTML = ''
+
+const deleteButton = document.querySelector(taskInput.value)
+
+button.addEventListener('click', () =>{
+    if(button){
+        console.log(button)
+    }
+}) 
+deleteAllButton.addEventListener('click', () =>{
+    ul.innerHTML = ''
     tasks = []
-    index = 1
+    taskInput.focus()
 })
